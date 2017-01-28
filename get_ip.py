@@ -15,24 +15,22 @@ def isAlive(ip):
     url = "http://www.baidu.com/"
 
     try:
-        # timeout 设置为10，如果你不能忍受你的代理延时超过10，就修改timeout的数字
-        resp = urllib2.urlopen(url, timeout=1)
+        # timeout 设置为5，如果不能忍受你的代理延时超过5，就修改timeout的数字
+        resp = urllib2.urlopen(url, timeout=5)
 
         if resp.code == 200:
-            print "Work"
+            print "\tWork"
             ip_list.append(ip)
             return True
 
         else:
-            print "Not work"
+            print "\tNot work"
             return False
     except:
-        print "Not work"
+        print "\tNot work"
         return False
 
 # 获取文件中所有ip
-
-
 def get_ip_list(data):
     global sum
 
@@ -49,8 +47,6 @@ def get_ip_list(data):
         isAlive(proxy)
 
 # 保存可用ip
-
-
 def save_ip(ip):
     f1 = open('ip_list.txt', 'w')
     f1.write(str(ip))
@@ -78,7 +74,6 @@ def alive_ip(page):
 
 ip_list = []
 sum = 0
-
 
 # 在python的函数中和全局同名的变量，如果你有修改变量的值就会变成局部变量，在修改之前对该变量的引用
 # 自然就会出现没定义这样的错误了，如果确定要引用全局变量，并且要对它修改，必须加上global关键字。
